@@ -10,5 +10,12 @@
   <%= @link.url %>
 </p>
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+<% if @link.user=current_user %>
+<%= link_to 'Edit', edit_link_path(@link), class: "btn btn-default" %>
+<%= link_to 'Destroy', @link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+<%= link_to 'Back', links_path, class: "btn btn-default" %>
+<%else%>
+<%= link_to 'Back', links_path, class: "btn btn-default" %>
+<%end%>
+
+
